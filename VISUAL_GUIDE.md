@@ -306,57 +306,49 @@ graph LR
 Common worktree commands visualized.
 
 ```mermaid
-stateDiagram-v2
-    [*] --> MainBranch: Initial repository
+flowchart TD
+    Start([Main Branch]) --> Create{Create<br/>Worktrees}
 
-    MainBranch --> CreateWorktree1: git worktree add -b maintainability-impl<br/>../referee-pattern-maintainability
-    MainBranch --> CreateWorktree2: git worktree add -b performance-impl<br/>../referee-pattern-performance
-    MainBranch --> CreateWorktree3: git worktree add -b robustness-impl<br/>../referee-pattern-robustness
+    Create -->|maintainability| WT1[git worktree add -b<br/>maintainability-impl<br/>../referee-pattern-maintainability]
+    Create -->|performance| WT2[git worktree add -b<br/>performance-impl<br/>../referee-pattern-performance]
+    Create -->|robustness| WT3[git worktree add -b<br/>robustness-impl<br/>../referee-pattern-robustness]
 
-    CreateWorktree1 --> ActiveWorktree1: Worktree 1 Active
-    CreateWorktree2 --> ActiveWorktree2: Worktree 2 Active
-    CreateWorktree3 --> ActiveWorktree3: Worktree 3 Active
+    WT1 --> Work1[Work in Worktree 1<br/>Make changes & commit]
+    WT2 --> Work2[Work in Worktree 2<br/>Make changes & commit]
+    WT3 --> Work3[Work in Worktree 3<br/>Make changes & commit]
 
-    ActiveWorktree1 --> WorkInProgress1: Make changes, commit
-    ActiveWorktree2 --> WorkInProgress2: Make changes, commit
-    ActiveWorktree3 --> WorkInProgress3: Make changes, commit
+    Work1 --> Done1[Implementation Complete]
+    Work2 --> Done2[Implementation Complete]
+    Work3 --> Done3[Implementation Complete]
 
-    WorkInProgress1 --> Complete1: Implementation done
-    WorkInProgress2 --> Complete2: Implementation done
-    WorkInProgress3 --> Complete3: Implementation done
+    Done1 --> List[git worktree list<br/>View all worktrees]
+    Done2 --> List
+    Done3 --> List
 
-    Complete1 --> Compare: git worktree list
-    Complete2 --> Compare
-    Complete3 --> Compare
+    List --> Compare[Compare Implementations<br/>Side-by-side]
 
-    Compare --> Merge: Compare & merge to main
+    Compare --> MergeMain[Merge to main branch]
 
-    Merge --> Remove1: git worktree remove<br/>../referee-pattern-maintainability
-    Merge --> Remove2: git worktree remove<br/>../referee-pattern-performance
-    Merge --> Remove3: git worktree remove<br/>../referee-pattern-robustness
+    MergeMain --> Clean{Cleanup}
 
-    Remove1 --> CleanBranch1: Optional: git branch -D maintainability-impl
-    Remove2 --> CleanBranch2: Optional: git branch -D performance-impl
-    Remove3 --> CleanBranch3: Optional: git branch -D robustness-impl
+    Clean --> Remove1[git worktree remove<br/>../referee-pattern-maintainability<br/>--force]
+    Clean --> Remove2[git worktree remove<br/>../referee-pattern-performance<br/>--force]
+    Clean --> Remove3[git worktree remove<br/>../referee-pattern-robustness<br/>--force]
 
-    CleanBranch1 --> [*]
-    CleanBranch2 --> [*]
-    CleanBranch3 --> [*]
+    Remove1 --> Optional1[Optional:<br/>Delete branch]
+    Remove2 --> Optional2[Optional:<br/>Delete branch]
+    Remove3 --> Optional3[Optional:<br/>Delete branch]
 
-    note right of MainBranch
-        Start: One repository
-        on main branch
-    end note
+    Optional1 --> End([Clean Repository])
+    Optional2 --> End
+    Optional3 --> End
 
-    note right of Compare
-        All worktrees accessible
-        simultaneously for comparison
-    end note
-
-    note right of Merge
-        Merge best features
-        to main branch
-    end note
+    style Start fill:#e1f5e1
+    style End fill:#e1f5e1
+    style Work1 fill:#ffd6cc
+    style Work2 fill:#cce5ff
+    style Work3 fill:#fff4cc
+    style MergeMain fill:#d4edda
 ```
 
 ---
