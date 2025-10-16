@@ -84,38 +84,29 @@ referee-pattern/
 │       ├── readability.md
 │       ├── security.md
 │       └── testing.md
-├── calculator/          # Example merged implementation
-│   ├── __init__.py
-│   ├── calculator.py
-│   ├── operations.py
-│   └── exceptions.py
 ├── features/            # BDD specifications
 │   ├── calculator.feature
 │   └── steps/
-│       └── calculator_steps.py
+│       └── calculator_steps.py  # TODO: Implement these!
 └── PATTERN.md          # Detailed pattern explanation
 ```
 
-## Example: Calculator Implementation
+## The Challenge: Calculator Implementation
 
-This repo includes a working example - a simple calculator implemented using the referee pattern.
+This template includes a feature spec for a simple calculator - your agents will implement it using the referee pattern.
 
 **The Problem:** Build a calculator that handles basic arithmetic (add, subtract, multiply, divide) and division by zero errors.
 
-**Three Agent Perspectives:**
+**Your Task:**
+1. Run the workflow script: `./run-referee-pattern.sh`
+2. Three specialized agents will independently implement the calculator:
+   - **Maintainability agent** - Clean architecture, SOLID principles
+   - **Performance agent** - Speed and memory efficiency
+   - **Robustness agent** - Error handling and edge cases
+3. Review the different implementations
+4. Merge the best approaches into your main branch
 
-| Agent | Lines | Approach | Key Features |
-|-------|-------|----------|--------------|
-| **Maintainability** | 255 | Modular (4 files) | Strategy Pattern, extensible, SOLID |
-| **Performance** | 101 | Minimal (1 file) | \`__slots__\`, direct methods, optimized |
-| **Robustness** | 534 | Defensive (1 file) | 7 exception types, logging, thread-safe |
-
-**Merged Result:** 302 lines combining:
-- Maintainability's modular Strategy Pattern architecture
-- Performance's \`__slots__\` memory optimization
-- Robustness's exception hierarchy and error handling
-
-All tests pass: 5 scenarios, 15 steps ✅
+**Success Criteria:** All tests pass: 5 scenarios, 15 steps ✅
 
 ## The Specialized Agents
 
