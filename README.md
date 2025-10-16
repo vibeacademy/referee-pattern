@@ -14,6 +14,33 @@ This approach combines diverse perspectives to create code that is:
 - ✅ Performant (optimized, efficient)
 - ✅ Robust (error handling, edge cases)
 
+### Visual Overview
+
+```mermaid
+graph LR
+    Start[📋 Feature Spec] --> Parallel{Launch 3 Agents}
+
+    Parallel --> M[🏗️ Maintainability<br/>Clean architecture]
+    Parallel --> P[⚡ Performance<br/>Optimized code]
+    Parallel --> R[🛡️ Robustness<br/>Error handling]
+
+    M --> Compare[👁️ Compare<br/>Implementations]
+    P --> Compare
+    R --> Compare
+
+    Compare --> Merge[🔀 Merge<br/>Best Features]
+    Merge --> Final[✨ Final<br/>Implementation]
+
+    style Start fill:#e1f5e1
+    style M fill:#ffd6cc
+    style P fill:#cce5ff
+    style R fill:#fff4cc
+    style Merge fill:#f0e6ff
+    style Final fill:#d4edda
+```
+
+**See [VISUAL_GUIDE.md](./VISUAL_GUIDE.md) for detailed diagrams and flowcharts.**
+
 ## Quick Start
 
 ### Prerequisites
@@ -353,6 +380,7 @@ Not recommended for:
 
 ### Core Documentation
 - [PATTERN.md](./PATTERN.md) - Detailed explanation of the referee pattern
+- [VISUAL_GUIDE.md](./VISUAL_GUIDE.md) - **Diagrams, flowcharts, and visual walkthroughs**
 - [MERGE_GUIDE.md](./MERGE_GUIDE.md) - **Step-by-step guide for merging implementations**
 - [AGENT_USAGE_GUIDE.md](./AGENT_USAGE_GUIDE.md) - **How to use specialized agents with template prompts**
 - [SUCCESS_CRITERIA.md](./SUCCESS_CRITERIA.md) - **Completion checklist and verification steps**
