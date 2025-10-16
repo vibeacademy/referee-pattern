@@ -5,7 +5,7 @@ A template project demonstrating the **Referee Pattern** - a powerful workflow f
 ## What is the Referee Pattern?
 
 The Referee Pattern is a code generation workflow where:
-1. Multiple specialized agents (like "referees") independently implement the same feature
+1. Multiple specialized agents independently implement the same feature
 2. Each agent focuses on a specific quality attribute (maintainability, performance, robustness, etc.)
 3. The implementations are evaluated and the best aspects are merged into a final solution
 
