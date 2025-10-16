@@ -92,19 +92,33 @@ init_project() {
 cleanup_worktrees() {
     print_header "Cleaning Up Old Worktrees"
 
+    # Remove worktrees using git worktree list
     for worktree in maintainability performance robustness; do
-        if [ -d "../referee-pattern-${worktree}" ]; then
-            print_info "Removing old ${worktree} worktree..."
-            git worktree remove ../referee-pattern-${worktree} --force 2>/dev/null || true
+        local worktree_path="../referee-pattern-${worktree}"
+
+        # Check if worktree is registered with git
+        if git worktree list | grep -q "${worktree_path}"; then
+            print_info "Removing git worktree: ${worktree}..."
+            git worktree remove "${worktree_path}" --force 2>/dev/null || true
+        fi
+
+        # Also remove directory if it still exists (handles orphaned directories)
+        if [ -d "${worktree_path}" ]; then
+            print_info "Removing orphaned directory: ${worktree_path}..."
+            rm -rf "${worktree_path}" 2>/dev/null || true
         fi
     done
 
+    # Delete branches
     for branch in maintainability-calc performance-calc robustness-calc; do
         if git show-ref --verify --quiet refs/heads/${branch}; then
-            print_info "Deleting old ${branch} branch..."
+            print_info "Deleting branch: ${branch}..."
             git branch -D ${branch} 2>/dev/null || true
         fi
     done
+
+    # Prune any stale worktree administrative data
+    git worktree prune 2>/dev/null || true
 
     print_step "Cleanup complete"
 }
