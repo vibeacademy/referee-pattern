@@ -1,0 +1,31 @@
+{
+  "name": "referee-pattern",
+  "version": "0.0.0-development",
+  "description": "Template project demonstrating the Referee Pattern with Claude Code agents",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vibeacademy/referee-pattern.git"
+  },
+  "author": "Vibe Academy",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "semantic-release": "^22.0.12"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

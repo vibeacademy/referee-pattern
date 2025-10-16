@@ -156,6 +156,42 @@ This is a template project - use it however you like!
 
 ## Contributing
 
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) for automated versioning and changelog generation.
+
+### Commit Message Format
+
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+**Types:**
+- `feat`: A new feature (triggers minor version bump)
+- `fix`: A bug fix (triggers patch version bump)
+- `docs`: Documentation changes only
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code refactoring without feature changes
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `build`: Build system changes
+- `ci`: CI configuration changes
+- `chore`: Other changes that don't modify src or test files
+
+**Examples:**
+```bash
+feat: add division by zero handling
+fix: correct calculator memory leak
+docs: update installation instructions
+```
+
+The project uses:
+- **Husky** - Git hooks for commit message validation
+- **Commitlint** - Enforces conventional commit format
+- **Semantic Release** - Automated versioning and releases on GitHub
+
 This is a demonstration/template project. Feel free to fork and adapt for your needs!
 
 ---
