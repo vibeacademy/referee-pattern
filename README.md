@@ -173,7 +173,3 @@ Not recommended for:
 ## License
 
 This is a template project - use it however you like!
-
----
-
-**Built with [Claude Code](https://claude.com/claude-code) 🤖**
