@@ -9,12 +9,8 @@ wheels/
 # Virtual environments
 .venv
 
-# Environment variables (API keys)
-.env
-
 # Logs
 *.log
-calculator.log
 
 # IDE
 .vscode/
@@ -26,13 +22,6 @@ calculator.log
 # OS
 .DS_Store
 Thumbs.db
-
-# Node.js (for semantic-release tooling)
-node_modules/
-package-lock.json
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Note: .claude/ directory IS included in this template repo
 # so users can see the specialized agents
