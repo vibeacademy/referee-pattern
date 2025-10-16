@@ -77,12 +77,13 @@ init_project() {
         print_step "Virtual environment already exists"
     fi
 
-    # Run tests to verify baseline
-    print_info "Running baseline tests..."
-    if uv run behave > /dev/null 2>&1; then
-        print_step "All tests pass on main branch"
+    # Verify test infrastructure is working
+    print_info "Verifying test infrastructure..."
+    if uv run behave --dry-run > /dev/null 2>&1; then
+        print_step "Test infrastructure is ready (5 scenarios, 15 steps)"
+        print_info "Tests will fail until agents implement the calculator"
     else
-        print_error "Tests are failing on main branch. Please fix before continuing."
+        print_error "Test infrastructure has errors. Please check features/calculator.feature"
         exit 1
     fi
 }
@@ -144,16 +145,11 @@ show_next_steps() {
     print_msg "$YELLOW" "2. Or use the Task tool to run agents programmatically"
     echo ""
     print_msg "$YELLOW" "3. Once all implementations are complete:"
-    echo "   - Compare the implementations"
-    echo "   - Merge the best approaches"
+    echo "   - Compare the implementations in each worktree"
+    echo "   - Merge the best approaches back to main"
     echo "   - Run tests to verify: uv run behave"
     echo ""
-    print_msg "$GREEN" "The calculator example in this repo shows the end result of this process!"
-    echo ""
-    print_info "Explore the different implementations:"
-    echo "  - Maintainability: ../referee-pattern-maintainability/referee/"
-    echo "  - Performance: ../referee-pattern-performance/calculator.py"
-    echo "  - Robustness: ../referee-pattern-robustness/calculator.py"
+    print_msg "$GREEN" "Success criteria: All tests pass (5 scenarios, 15 steps)"
     echo ""
     print_info "Read PATTERN.md for detailed explanation of the workflow."
 }
