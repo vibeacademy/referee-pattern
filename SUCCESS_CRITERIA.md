@@ -259,7 +259,7 @@ Use this final checklist before considering the pattern complete:
 - [ ] Reflected on lessons learned
 
 ### Cleanup Phase
-- [ ] Worktrees removed (./cleanup-worktrees.sh)
+- [ ] Worktrees removed (git worktree remove --force)
 - [ ] Implementation branches cleaned up (optional)
 - [ ] Final code committed to main branch
 - [ ] Repository is clean and organized

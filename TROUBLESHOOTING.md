@@ -26,18 +26,15 @@ This guide helps you resolve common issues when using the Referee Pattern.
 **Solution:**
 
 ```bash
-# Option 1: Remove the directory and try again
+# Remove the directory and try again
 rm -rf ../referee-pattern-maintainability
 git worktree add -b maintainability-impl ../referee-pattern-maintainability
 
-# Option 2: Use the cleanup script
-./cleanup-worktrees.sh
-
-# Then recreate worktrees
-git worktree add -b maintainability-impl ../referee-pattern-maintainability
+# Or clean up stale worktree references first
+git worktree prune
 ```
 
-**Prevention:** Always use `./cleanup-worktrees.sh` to clean up before starting fresh.
+**Prevention:** Use `git worktree prune` to clean up stale references before creating new worktrees.
 
 ---
 
@@ -744,9 +741,9 @@ When something goes wrong, check these first:
    - Don't write all code then test
    - Test after each small change
 
-3. **Use cleanup script:**
+3. **Clean up worktrees:**
    ```bash
-   ./cleanup-worktrees.sh
+   git worktree prune
    ```
 
 4. **Commit often:**
@@ -776,15 +773,18 @@ Sometimes the best solution is to start fresh:
 
 **How to start fresh:**
 ```bash
-# 1. Clean up everything
-./cleanup-worktrees.sh
+# 1. Clean up worktrees
+git worktree remove ../referee-pattern-maintainability --force
+git worktree remove ../referee-pattern-performance --force
+git worktree remove ../referee-pattern-robustness --force
+git worktree prune
 
 # 2. Remove any partial work
 git checkout main
 git reset --hard origin/main  # WARNING: Loses uncommitted changes
 
 # 3. Start from beginning
-# Follow README.md or run ./run-referee-pattern.sh
+# Follow README.md Quick Start
 
 # 4. This time, commit more frequently!
 ```

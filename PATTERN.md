@@ -263,4 +263,4 @@ All implementations pass 100% of tests - they're functionally equivalent but arc
 
 ---
 
-**Try it yourself! Clone this repo and run `./run-referee-pattern.sh` to see the pattern in action.**
+**Try it yourself! Clone this repo, start Claude Code, and paste the prompt from the README to see the pattern in action.**

@@ -45,11 +45,10 @@ graph LR
 
 ### Prerequisites
 
-- [uv](https://docs.astral.sh/uv/) - Fast Python package manager
 - [Claude Code CLI](https://docs.claude.com/en/docs/claude-code) installed
-- Anthropic API key
+- Anthropic API key set in your environment
 
-### Setup
+### Get Started in 60 Seconds
 
 1. **Clone the repository:**
    ```bash
@@ -57,95 +56,30 @@ graph LR
    cd referee-pattern
    ```
 
-2. **Set your Anthropic API key:**
+2. **Start Claude Code:**
    ```bash
-   # Option 1: Export environment variable
-   export ANTHROPIC_API_KEY="your-api-key-here"
-
-   # Option 2: Add to your shell profile (~/.zshrc or ~/.bashrc)
-   echo 'export ANTHROPIC_API_KEY="your-api-key-here"' >> ~/.zshrc
-   source ~/.zshrc
+   claude code
    ```
 
-3. **Choose your workflow:** See "Two Ways to Use This Template" below
+3. **Paste this prompt:**
+   ```
+   Use the maintainability, performance, and robustness coding agents to solve
+   the spec, then use the merge-critic agent to put the best bits into a final
+   solution. Make sure the specs pass against the final solution.
+   ```
 
----
+4. **Watch the magic happen:**
+   - Claude Code automatically orchestrates three specialized agents in parallel
+   - Each agent implements the calculator spec from their perspective
+   - The merge-critic agent analyzes and combines the best approaches
+   - Tests are verified against the final solution
 
-## Two Ways to Use This Template
+5. **Review the results:**
+   - Read the merge analysis and rationale
+   - See which approaches were selected and why
+   - Verify all tests pass: 5 scenarios, 15 steps ✅
 
-You can complete the Referee Pattern using either an automated script or manual steps. **Both approaches achieve the same result** - choose based on your learning style and comfort with git.
-
-### Option 1: Automated Script (Recommended for First-Time Users)
-
-The script automates worktree creation and provides a guided experience.
-
-```bash
-./run-referee-pattern.sh
-```
-
-**What the script does:**
-- Initializes the project with uv
-- Creates git worktrees for each specialized agent
-- Runs the maintainability, performance, and robustness agents in parallel
-- Shows you the different implementations
-- Guides you through merging the best approaches
-
-**Pros:**
-- ✅ Automated setup - less manual work
-- ✅ Guided workflow - script prompts you through each step
-- ✅ Handles common errors gracefully
-- ✅ Good for learning the pattern quickly
-
-**Cons:**
-- ❌ Less hands-on - you don't see every command
-- ❌ Hides underlying git operations
-- ❌ May not work if you have custom git setup
-
-**When to use:** First time through the pattern, want to focus on the concepts rather than git mechanics.
-
----
-
-### Option 2: Manual Workflow (Recommended for Deep Learning)
-
-Follow manual steps to understand each component of the pattern.
-
-```bash
-# 1. Initialize Python environment
-uv sync
-
-# 2. Run tests to see the baseline
-uv run behave
-
-# 3. Create worktrees for parallel agent development
-git worktree add -b maintainability-impl ../referee-pattern-maintainability
-git worktree add -b performance-impl ../referee-pattern-performance
-git worktree add -b robustness-impl ../referee-pattern-robustness
-
-# 4. In each worktree, use Claude Code to implement from that perspective
-# (See AGENT_USAGE_GUIDE.md for detailed instructions and template prompts)
-
-# 5. After implementations complete, merge using MERGE_GUIDE.md
-# (See SUCCESS_CRITERIA.md to know when you're done)
-```
-
-**Pros:**
-- ✅ Deep understanding - you execute every step
-- ✅ Full control and flexibility
-- ✅ Learn git worktrees directly
-- ✅ Easy to customize for your needs
-
-**Cons:**
-- ❌ More commands to manage
-- ❌ Need to understand worktrees
-- ❌ More opportunities for errors
-
-**When to use:** Want to understand the mechanics, comfortable with git, need to customize the workflow.
-
----
-
-**Note:** The script is a **convenience wrapper**, not a requirement. Both workflows are fully supported and documented. If the script doesn't work for your setup, the manual workflow will always work.
-
-**Cleanup:** Both workflows use the same cleanup process - see [Understanding Git Worktrees](#understanding-git-worktrees) below for cleanup instructions.
+That's it! Claude Code handles all the git worktrees, parallel execution, and merging automatically.
 
 ---
 
@@ -200,9 +134,6 @@ This means a previous worktree wasn't cleaned up.
 # Solution: Remove the directory and try again
 rm -rf ../referee-pattern-maintainability
 git worktree add -b maintainability-impl ../referee-pattern-maintainability
-
-# Or use the cleanup script (see below)
-./cleanup-worktrees.sh
 ```
 
 **Error: `fatal: 'maintainability-impl' is already checked out`**
@@ -254,15 +185,9 @@ git worktree prune
 git worktree move <old-path> <new-path>
 ```
 
-### Cleanup Script
+### Cleanup After Completion
 
-To clean up all worktrees created by this pattern, use the cleanup script:
-
-```bash
-./cleanup-worktrees.sh
-```
-
-Or manually:
+To clean up worktrees created during the Referee Pattern:
 
 ```bash
 # Remove worktrees
@@ -274,6 +199,9 @@ git worktree remove ../referee-pattern-robustness --force
 git branch -D maintainability-impl
 git branch -D performance-impl
 git branch -D robustness-impl
+
+# Clean up any stale references
+git worktree prune
 ```
 
 ### FAQ
@@ -332,22 +260,20 @@ referee-pattern/
 
 ## The Challenge: Calculator Implementation
 
-This template includes a feature spec for a simple calculator - your agents will implement it using the referee pattern.
+This template includes a feature spec for a simple calculator that demonstrates the Referee Pattern in action.
 
 **The Problem:** Build a calculator that handles basic arithmetic (add, subtract, multiply, divide) and division by zero errors.
 
-**Your Task:**
-1. Run the workflow script: `./run-referee-pattern.sh`
-2. Three specialized agents will independently implement the calculator:
+**How It Works:**
+1. Three specialized agents independently implement the calculator:
    - **Maintainability agent** - Clean architecture, SOLID principles
    - **Performance agent** - Speed and memory efficiency
    - **Robustness agent** - Error handling and edge cases
-3. Review the different implementations
-4. Merge the best approaches into your main branch (see [MERGE_GUIDE.md](./MERGE_GUIDE.md))
+2. Claude Code orchestrates them in parallel automatically
+3. The merge-critic agent analyzes and combines the best approaches
+4. The final solution is tested and verified
 
 **Success Criteria:** All tests pass: 5 scenarios, 15 steps ✅
-
-**See [SUCCESS_CRITERIA.md](./SUCCESS_CRITERIA.md) for complete checklist and verification steps.**
 
 ## The Specialized Agents
 

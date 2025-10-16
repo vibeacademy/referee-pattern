@@ -21,14 +21,10 @@ The complete Referee Pattern workflow from setup to final merge.
 
 ```mermaid
 flowchart TD
-    Start([Start: Clone Repository]) --> Setup[Setup Environment<br/>uv sync]
-    Setup --> Choose{Choose<br/>Workflow?}
+    Start([Start: Clone Repository]) --> Setup[Start Claude Code<br/>claude code]
+    Setup --> Prompt[Paste Prompt:<br/>Use maintainability, performance,<br/>and robustness agents]
 
-    Choose -->|Automated| Script[Run Script<br/>./run-referee-pattern.sh]
-    Choose -->|Manual| Manual[Create Worktrees<br/>git worktree add...]
-
-    Script --> Worktrees[Three Worktrees Created]
-    Manual --> Worktrees
+    Prompt --> Worktrees[Claude Code Creates<br/>Three Worktrees Automatically]
 
     Worktrees --> Parallel{Launch Agents<br/>in Parallel?}
 
@@ -76,7 +72,7 @@ flowchart TD
 
     Pass -->|Yes| Document[Document Decisions<br/>MERGE_DECISIONS.md]
 
-    Document --> Cleanup[Cleanup Worktrees<br/>./cleanup-worktrees.sh]
+    Document --> Cleanup[Optional: Cleanup Worktrees<br/>git worktree remove]
 
     Cleanup --> Done([Done: Pattern Complete!])
 
