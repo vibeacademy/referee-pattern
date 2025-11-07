@@ -1,5 +1,15 @@
 # Referee Pattern with Claude Code
 
+<div align="center">
+
+**A [Vibe Academy](https://www.vibe.academy/) Learning Tool**
+
+*Master multi-perspective problem-solving through AI-powered specialized agents*
+
+---
+
+</div>
+
 A template project demonstrating the **Referee Pattern** - a powerful workflow for using multiple specialized Claude Code agents to solve problems from different perspectives, then merging the best approaches.
 
 ## What is the Referee Pattern?
@@ -170,16 +180,23 @@ Not recommended for:
 - [.claude/agents/README.md](./.claude/agents/README.md) - Agent descriptions
 - [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code)
 
-## About This Project
+## 📚 Continue Learning
 
-This template is part of **[Vibe Academy](https://www.vibe.academy/)**'s educational materials.
-
-### Learn Advanced Codebase Navigation
-
-Want to master the skills needed to work effectively with complex codebases? Check out the **[How to Read Code](https://www.vibe.academy/how-to-read-code)** course - a comprehensive guide to understanding, navigating, and contributing to unfamiliar code.
-
-The Referee Pattern demonstrated here is one of many advanced techniques for working with AI-assisted development and understanding code from multiple perspectives.
+Want to level up your coding skills even further? Check out
+[How to Read Code](https://www.vibe.academy/how-to-read-code) - a comprehensive
+course from Vibe Academy that teaches you the essential skill of understanding
+and navigating codebases like a pro.
 
 ## License
 
 This is a template project - use it however you like!
+
+---
+
+<div align="center">
+
+**Made with ❤️ by [Vibe Academy](https://www.vibe.academy/)**
+
+*Empowering developers through practical, hands-on learning*
+
+</div>
