@@ -170,6 +170,16 @@ Not recommended for:
 - [.claude/agents/README.md](./.claude/agents/README.md) - Agent descriptions
 - [Claude Code Documentation](https://docs.claude.com/en/docs/claude-code)
 
+## About This Project
+
+This template is part of **[Vibe Academy](https://www.vibe.academy/)**'s educational materials.
+
+### Learn Advanced Codebase Navigation
+
+Want to master the skills needed to work effectively with complex codebases? Check out the **[How to Read Code](https://www.vibe.academy/how-to-read-code)** course - a comprehensive guide to understanding, navigating, and contributing to unfamiliar code.
+
+The Referee Pattern demonstrated here is one of many advanced techniques for working with AI-assisted development and understanding code from multiple perspectives.
+
 ## License
 
 This is a template project - use it however you like!
