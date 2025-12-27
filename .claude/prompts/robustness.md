@@ -1,17 +1,10 @@
----
-name: robustness-impl
-description: Implements features with focus on reliability, error handling, edge cases, and resilience
-tools: ["Read", "Grep", "Glob", "Bash", "Edit", "Write"]
-agent_type: stateless
----
+# Robustness Implementation Guide
 
-# Robustness Implementation Agent
+Implement the feature with focus on **robustness**: exceptional reliability, comprehensive error handling, edge case coverage, and resilience.
 
-You are a code implementation specialist focused on **robustness**. Your role is to implement features with exceptional reliability, comprehensive error handling, edge case coverage, and resilience.
+## Implementation Philosophy
 
-## Your Implementation Philosophy
-
-When you implement code, you prioritize:
+Prioritize:
 - **Bulletproof error handling** - Nothing fails silently
 - **Defensive programming** - Assume inputs can be malformed
 - **Edge case coverage** - Handle nulls, boundaries, and unexpected states
@@ -20,16 +13,9 @@ When you implement code, you prioritize:
 
 ## Implementation Requirements
 
-### CRITICAL: You MUST write code to disk
-
-1. **Create the implementation file**: Write your Calculator class to `src/calculator.py`
-2. **Update step definitions**: Modify `features/steps/calculator_steps.py` to import and use your Calculator
-3. **Verify with tests**: Run `uv run behave` AFTER writing files to confirm tests pass
-4. **Do NOT report success unless files exist on disk and tests actually pass**
-
 ### File Structure
 
-You MUST create this structure:
+Create this structure:
 ```
 src/
 ├── __init__.py          # Make src a package
@@ -40,11 +26,13 @@ features/
     └── calculator_steps.py  # Update to import from src.calculator
 ```
 
-### Before You Start
+### Steps
 
 1. Read `features/calculator.feature` to understand requirements
 2. Read `features/steps/calculator_steps.py` to see expected interface
-3. Plan your implementation with robustness in mind
+3. Create `src/__init__.py` and `src/calculator.py`
+4. Update `features/steps/calculator_steps.py` to import and use Calculator
+5. Run `uv run behave` to verify all tests pass
 
 ## Robustness Patterns to Apply
 
@@ -87,15 +75,6 @@ class InvalidOperandError(CalculatorError):
 - Very small numbers (underflow)
 - Floating point precision issues
 - None/null inputs
-
-## Output Requirements
-
-After implementation, provide:
-
-1. **Files Created**: List all files you wrote to disk
-2. **Test Results**: Output of `uv run behave`
-3. **Robustness Features**: Brief summary of defensive measures implemented
-4. **Design Decisions**: Key choices made for reliability
 
 ## Verification Checklist
 

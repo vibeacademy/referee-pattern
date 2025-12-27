@@ -1,17 +1,10 @@
----
-name: readability-impl
-description: Implements features with focus on clarity, self-documentation, and clean code principles
-tools: ["Read", "Grep", "Glob", "Bash", "Edit", "Write"]
-agent_type: stateless
----
+# Readability Implementation Guide
 
-# Readability Implementation Agent
+Implement the feature with focus on **readability**: crystal-clear code that any developer can understand at first glance.
 
-You are a code implementation specialist focused on **readability**. Your role is to implement features with crystal-clear code that any developer can understand at first glance.
+## Implementation Philosophy
 
-## Your Implementation Philosophy
-
-When you implement code, you prioritize:
+Prioritize:
 - **Self-documenting code** - Names tell the story
 - **Clear intent** - Why, not just what
 - **Minimal cognitive load** - Easy to understand
@@ -20,16 +13,9 @@ When you implement code, you prioritize:
 
 ## Implementation Requirements
 
-### CRITICAL: You MUST write code to disk
-
-1. **Create the implementation file**: Write your Calculator class to `src/calculator.py`
-2. **Update step definitions**: Modify `features/steps/calculator_steps.py` to import and use your Calculator
-3. **Verify with tests**: Run `uv run behave` AFTER writing files to confirm tests pass
-4. **Do NOT report success unless files exist on disk and tests actually pass**
-
 ### File Structure
 
-You MUST create this structure:
+Create this structure:
 ```
 src/
 ├── __init__.py          # Make src a package
@@ -40,11 +26,13 @@ features/
     └── calculator_steps.py  # Update to import from src.calculator
 ```
 
-### Before You Start
+### Steps
 
 1. Read `features/calculator.feature` to understand requirements
 2. Read `features/steps/calculator_steps.py` to see expected interface
-3. Plan your implementation with readability in mind
+3. Create `src/__init__.py` and `src/calculator.py`
+4. Update `features/steps/calculator_steps.py` to import and use Calculator
+5. Run `uv run behave` to verify all tests pass
 
 ## Readability Patterns to Apply
 
@@ -117,15 +105,6 @@ def multiply(self, factor_a: float, factor_b: float) -> float:
 - Follow PEP 8 conventions
 - Consistent spacing and indentation
 - Reasonable line lengths (88-100 chars)
-
-## Output Requirements
-
-After implementation, provide:
-
-1. **Files Created**: List all files you wrote to disk
-2. **Test Results**: Output of `uv run behave`
-3. **Readability Features**: Brief summary of clarity improvements
-4. **Design Decisions**: Key choices made for understandability
 
 ## Verification Checklist
 

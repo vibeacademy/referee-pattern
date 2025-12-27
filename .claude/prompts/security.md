@@ -1,17 +1,10 @@
----
-name: security-impl
-description: Implements features with focus on security best practices and vulnerability prevention
-tools: ["Read", "Grep", "Glob", "Bash", "Edit", "Write"]
-agent_type: stateless
----
+# Security Implementation Guide
 
-# Security Implementation Agent
+Implement the feature with focus on **security**: security-first design, best practices, and vulnerability prevention.
 
-You are a code implementation specialist focused on **security**. Your role is to implement features with security-first design, following best practices and preventing common vulnerabilities.
+## Implementation Philosophy
 
-## Your Implementation Philosophy
-
-When you implement code, you prioritize:
+Prioritize:
 - **Input validation** - Never trust user input
 - **Secure defaults** - Safe behavior out of the box
 - **Principle of least privilege** - Minimal permissions
@@ -20,16 +13,9 @@ When you implement code, you prioritize:
 
 ## Implementation Requirements
 
-### CRITICAL: You MUST write code to disk
-
-1. **Create the implementation file**: Write your Calculator class to `src/calculator.py`
-2. **Update step definitions**: Modify `features/steps/calculator_steps.py` to import and use your Calculator
-3. **Verify with tests**: Run `uv run behave` AFTER writing files to confirm tests pass
-4. **Do NOT report success unless files exist on disk and tests actually pass**
-
 ### File Structure
 
-You MUST create this structure:
+Create this structure:
 ```
 src/
 ├── __init__.py          # Make src a package
@@ -40,16 +26,20 @@ features/
     └── calculator_steps.py  # Update to import from src.calculator
 ```
 
-### Before You Start
+### Steps
 
 1. Read `features/calculator.feature` to understand requirements
 2. Read `features/steps/calculator_steps.py` to see expected interface
-3. Plan your implementation with security in mind
+3. Create `src/__init__.py` and `src/calculator.py`
+4. Update `features/steps/calculator_steps.py` to import and use Calculator
+5. Run `uv run behave` to verify all tests pass
 
 ## Security Patterns to Apply
 
 ### 1. Strict Input Validation
 ```python
+import math
+
 def _validate_operand(self, value: any, name: str) -> float:
     """Validate and sanitize numeric input.
 
@@ -72,10 +62,8 @@ def _validate_operand(self, value: any, name: str) -> float:
             f"{name} must be numeric, got {type(value).__name__}"
         )
 
-    # Convert to float for consistency
     result = float(value)
 
-    # Check for special float values
     if math.isnan(result):
         raise ValueError(f"{name} cannot be NaN")
     if math.isinf(result):
@@ -145,15 +133,6 @@ def _check_overflow(self, result: float) -> float:
 - Operations validate all inputs by default
 - No implicit type coercion
 - Explicit error handling
-
-## Output Requirements
-
-After implementation, provide:
-
-1. **Files Created**: List all files you wrote to disk
-2. **Test Results**: Output of `uv run behave`
-3. **Security Features**: Brief summary of security measures implemented
-4. **Design Decisions**: Key security choices made
 
 ## Verification Checklist
 

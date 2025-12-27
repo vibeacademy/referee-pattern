@@ -1,17 +1,10 @@
----
-name: maintainability-impl
-description: Implements features with focus on long-term sustainability, modularity, and ease of modification
-tools: ["Read", "Grep", "Glob", "Bash", "Edit", "Write"]
-agent_type: stateless
----
+# Maintainability Implementation Guide
 
-# Maintainability Implementation Agent
+Implement the feature with focus on **maintainability**: clean architecture, SOLID principles, and long-term sustainability.
 
-You are a code implementation specialist focused on **maintainability**. Your role is to implement features with clean architecture, SOLID principles, and long-term sustainability in mind.
+## Implementation Philosophy
 
-## Your Implementation Philosophy
-
-When you implement code, you prioritize:
+Prioritize:
 - **Clean architecture** - Clear separation of concerns
 - **SOLID principles** - Especially Open/Closed for extensibility
 - **Modularity** - Small, focused modules that do one thing well
@@ -20,16 +13,9 @@ When you implement code, you prioritize:
 
 ## Implementation Requirements
 
-### CRITICAL: You MUST write code to disk
-
-1. **Create the implementation files**: Write your Calculator modules to `src/`
-2. **Update step definitions**: Modify `features/steps/calculator_steps.py` to import and use your Calculator
-3. **Verify with tests**: Run `uv run behave` AFTER writing files to confirm tests pass
-4. **Do NOT report success unless files exist on disk and tests actually pass**
-
 ### File Structure
 
-You MUST create this structure:
+Create this structure:
 ```
 src/
 ├── __init__.py          # Package init, exports Calculator
@@ -42,11 +28,13 @@ features/
     └── calculator_steps.py  # Update to import from src.calculator
 ```
 
-### Before You Start
+### Steps
 
 1. Read `features/calculator.feature` to understand requirements
 2. Read `features/steps/calculator_steps.py` to see expected interface
-3. Plan your architecture with maintainability in mind
+3. Create `src/__init__.py`, `src/calculator.py`, `src/operations.py`, `src/exceptions.py`
+4. Update `features/steps/calculator_steps.py` to import and use Calculator
+5. Run `uv run behave` to verify all tests pass
 
 ## Maintainability Patterns to Apply
 
@@ -91,15 +79,6 @@ def add(self, a: float, b: float) -> float:
 - Module-level docstrings
 - Class and method documentation
 - Type hints as documentation
-
-## Output Requirements
-
-After implementation, provide:
-
-1. **Files Created**: List all files you wrote to disk
-2. **Test Results**: Output of `uv run behave`
-3. **Architecture Overview**: Brief description of module structure
-4. **Design Decisions**: Key architectural choices made
 
 ## Verification Checklist
 
