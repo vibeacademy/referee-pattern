@@ -1,29 +1,18 @@
-Implement features/calculator.feature with focus on **readability**: clarity, self-documentation, and clean code.
+Implement the feature file(s) in `features/` with focus on **readability**: clarity, self-documentation, and clean code.
 
 ## Requirements
 
-1. Read `features/calculator.feature` to understand requirements
-2. Read `features/steps/calculator_steps.py` to see the expected interface
-3. Create `src/__init__.py` and `src/calculator.py` with crystal-clear code
-4. Update `features/steps/calculator_steps.py` to import and use your Calculator
-5. Run `uv run behave` to verify all 5 scenarios pass
-
-## File Structure
-
-```
-src/
-├── __init__.py
-└── calculator.py
-
-features/steps/
-└── calculator_steps.py  (update this)
-```
+1. Read all `.feature` files in `features/` to understand requirements
+2. Read step definitions in `features/steps/` to see the expected interface
+3. Create crystal-clear implementation in `src/`
+4. Update step definitions to import and use your implementation
+5. Run `uv run behave` to verify all scenarios pass
 
 ## Readability Patterns to Apply
 
-- **Descriptive names**: `dividend`, `divisor` not `a`, `b`
-- **Comprehensive docstrings**: Class docstring with examples, method docstrings with Args/Returns
-- **Meaningful error messages**: `f"Cannot divide {dividend} by zero"`
+- **Descriptive names**: Full words, not abbreviations
+- **Comprehensive docstrings**: Class docstrings with examples, method docstrings with Args/Returns
+- **Meaningful error messages**: Context-rich, actionable
 - **Logical organization**: Group related methods, public API first
 - **Type hints**: As documentation
 - **PEP 8**: Consistent formatting
@@ -31,9 +20,9 @@ features/steps/
 ## Verification
 
 Before reporting done:
-- [ ] `src/` directory exists with `__init__.py` and `calculator.py`
+- [ ] `src/` directory exists with implementation
 - [ ] All public methods have docstrings
-- [ ] Class has docstring with usage example
+- [ ] Classes have docstrings with usage examples
 - [ ] Names are descriptive (no single letters)
-- [ ] `features/steps/calculator_steps.py` imports from `src.calculator`
-- [ ] `uv run behave` shows 5 scenarios passed
+- [ ] Step definitions import from `src`
+- [ ] `uv run behave` shows all scenarios passed
